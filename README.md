@@ -30,7 +30,7 @@ A professional landing page and secure admin panel for a digital agency with dyn
 **Database:** MongoDB Atlas  
 **Image Storage:** Cloudinary  
 **Auth:** Firebase (Google Sign-in)  
-**Deployment:** Vercel (Frontend) + Render/Railway (Backend)
+**Deployment:** Render (Frontend) + Render (Backend)
 
 ## Quick Start
 
@@ -102,7 +102,7 @@ See `plan.md` for detailed phase-by-phase development plan.
 
 ## Deployment
 
-### Frontend (Vercel)
+### Frontend (Render)
 - Connect GitHub repository
 - Set environment variables
 - Deploy automatically
@@ -123,7 +123,7 @@ See `plan.md` for detailed phase-by-phase development plan.
 - Free tier limitations:
   - Cloudinary: 25 monthly transformations
   - MongoDB Atlas: 512MB storage
-  - Vercel: Generous free tier for static sites
+  - Render: Generous free tier for static sites
   - Render: Sleep mode on free tier
 
 ## Support
