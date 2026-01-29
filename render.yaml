@@ -12,3 +12,24 @@ services:
         value: production
       - key: PORT
         value: 5000
+
+  - type: static
+    name: digital-agency-frontend
+    buildCommand: npm run build
+    staticPublishPath: dist
+    rootDir: frontend
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://digital-agency-backend.onrender.com/api/v1
+      - key: VITE_FIREBASE_API_KEY
+        value: AIzaSyCCAxw4546jf0tGI8Ds018bZR_Tpw-kCfQ
+      - key: VITE_FIREBASE_AUTH_DOMAIN
+        value: digital-agency-1726d.firebaseapp.com
+      - key: VITE_FIREBASE_PROJECT_ID
+        value: digital-agency-1726d
+      - key: VITE_FIREBASE_STORAGE_BUCKET
+        value: digital-agency-1726d.firebasestorage.app
+      - key: VITE_FIREBASE_MESSAGING_SENDER_ID
+        value: "216782347994"
+      - key: VITE_FIREBASE_APP_ID
+        value: 1:216782347994:web:4e55a563b9891b0872cfe3
