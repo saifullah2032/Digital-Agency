@@ -5,15 +5,9 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 const LoginPage = () => {
-  const { signInWithGoogle, user } = useAuth();
+  const { signInWithGoogle, setDemoUser } = useAuth();
   const navigate = useNavigate();
   const [isDemoMode, setIsDemoMode] = useState(false);
-
-  useEffect(() => {
-    if (user) {
-      navigate('/client-dashboard');
-    }
-  }, [user, navigate]);
 
   const handleGoogleSignIn = async () => {
     try {
@@ -33,12 +27,13 @@ const LoginPage = () => {
       photoURL: 'https://i.pravatar.cc/150?img=1'
     };
     
-    // Store in localStorage for persistence
-    localStorage.setItem('demoUser', JSON.stringify(demoUser));
-    localStorage.setItem('isDemoMode', 'true');
+    // Use the setDemoUser function from AuthContext to update state AND localStorage
+    setDemoUser(demoUser);
     
     toast.success('Demo mode activated! Welcome Demo Client');
     setIsDemoMode(true);
+    
+    // Navigate after state is updated
     navigate('/client-dashboard');
   };
 

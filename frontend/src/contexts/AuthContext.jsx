@@ -56,33 +56,40 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = async () => {
-    try {
-      // Clear demo mode if active
-      if (localStorage.getItem('isDemoMode') === 'true') {
-        localStorage.removeItem('isDemoMode');
-        localStorage.removeItem('demoUser');
-        setUser(null);
-        toast.success('Logged out from demo mode');
-        return;
-      }
+   const logout = async () => {
+     try {
+       // Clear demo mode if active
+       if (localStorage.getItem('isDemoMode') === 'true') {
+         localStorage.removeItem('isDemoMode');
+         localStorage.removeItem('demoUser');
+         setUser(null);
+         toast.success('Logged out from demo mode');
+         return;
+       }
 
-      // Otherwise sign out from Firebase
-      await signOut(auth);
-      toast.success('Logged out successfully');
-    } catch (error) {
-      console.error('Error signing out:', error);
-      toast.error('Failed to sign out');
-      throw error;
-    }
-  };
+       // Otherwise sign out from Firebase
+       await signOut(auth);
+       toast.success('Logged out successfully');
+     } catch (error) {
+       console.error('Error signing out:', error);
+       toast.error('Failed to sign out');
+       throw error;
+     }
+   };
 
-  const value = {
-    user,
-    loading,
-    signInWithGoogle,
-    logout,
-  };
+   const setDemoUser = (demoUserData) => {
+     localStorage.setItem('demoUser', JSON.stringify(demoUserData));
+     localStorage.setItem('isDemoMode', 'true');
+     setUser(demoUserData);
+   };
+
+   const value = {
+     user,
+     loading,
+     signInWithGoogle,
+     logout,
+     setDemoUser,
+   };
 
   return (
     <AuthContext.Provider value={value}>
