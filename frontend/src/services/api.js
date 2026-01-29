@@ -49,4 +49,67 @@ export const subscriptionAPI = {
   unsubscribe: (id) => api.delete(`/subscribe/${id}`),
 };
 
+// ========== CLIENT PORTAL API ==========
+export const clientPortalAPI = {
+  // Dashboard stats
+  getStats: (email) => api.get('/client/stats', { params: { email } }),
+  
+  // Projects
+  getProjects: (email) => api.get('/client/projects', { params: { email } }),
+  
+  // Messages
+  getMessages: (email) => api.get('/client/messages', { params: { email } }),
+  sendMessage: (data) => api.post('/client/messages', data),
+  markAsRead: (id) => api.patch(`/client/messages/${id}/read`),
+  
+  // Files
+  getFiles: (email) => api.get('/client/files', { params: { email } }),
+  uploadFile: (data) => api.post('/client/files', data),
+  deleteFile: (id) => api.delete(`/client/files/${id}`),
+  
+  // Email
+  sendWelcomeEmail: (data) => api.post('/client/welcome-email', data),
+};
+
+// ========== ADMIN DASHBOARD API ==========
+export const adminDashboardAPI = {
+  getStats: () => api.get('/dashboard/stats'),
+  getContacts: () => api.get('/dashboard/contacts'),
+  getSubscribers: () => api.get('/dashboard/subscribers'),
+};
+
+// ========== ACTIVITY API ==========
+export const activityAPI = {
+  getClientActivities: (email, limit = 50, page = 1) => 
+    api.get('/activities', { params: { email, limit, page } }),
+  getProjectActivities: (projectId, email) => 
+    api.get(`/activities/project/${projectId}`, { params: { email } }),
+  getActivityStats: (email) => 
+    api.get('/activities/stats', { params: { email } }),
+  deleteOldActivities: () => 
+    api.delete('/activities/cleanup'),
+};
+
+// ========== TEAM MEMBERS API ==========
+export const teamMembersAPI = {
+  getAll: (role, status, projectId) => 
+    api.get('/team-members', { params: { role, status, projectId } }),
+  getOne: (id) => 
+    api.get(`/team-members/${id}`),
+  create: (data) => 
+    api.post('/team-members', data),
+  update: (id, data) => 
+    api.patch(`/team-members/${id}`, data),
+  updatePermissions: (id, permissions) => 
+    api.patch(`/team-members/${id}/permissions`, { permissions }),
+  assignToProject: (id, projectId) => 
+    api.post(`/team-members/${id}/assign-project`, { projectId }),
+  removeFromProject: (id, projectId) => 
+    api.delete(`/team-members/${id}/project/${projectId}`),
+  delete: (id) => 
+    api.delete(`/team-members/${id}`),
+  getStats: () => 
+    api.get('/team-members/stats'),
+};
+
 export default api;

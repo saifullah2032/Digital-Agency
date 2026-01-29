@@ -1,5 +1,6 @@
 import Navbar from '../components/landing/Navbar';
 import HeroSection from '../components/landing/HeroSection';
+import ServicesSection from '../components/landing/ServicesSection';
 import ProjectsSection from '../components/landing/ProjectsSection';
 import TestimonialsSection from '../components/landing/TestimonialsSection';
 import ContactForm from '../components/landing/ContactForm';
@@ -10,6 +11,7 @@ const LandingPage = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
       <HeroSection />
+      <ServicesSection />
       <ProjectsSection />
       <TestimonialsSection />
       <ContactForm />

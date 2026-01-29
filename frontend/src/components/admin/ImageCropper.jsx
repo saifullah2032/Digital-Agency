@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
-import ReactImageCrop, { Crop } from 'react-image-crop';
-import 'react-image-crop/dist/styles.css';
+import ReactImageCrop from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
 import { X } from 'lucide-react';
 import toast from 'react-hot-toast';
 

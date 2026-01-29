@@ -12,6 +12,10 @@ const projectsRouter = require('./routes/projects');
 const clientsRouter = require('./routes/clients');
 const contactRouter = require('./routes/contact');
 const subscriptionRouter = require('./routes/subscription');
+const clientRouter = require('./routes/client');
+const dashboardRouter = require('./routes/dashboard');
+const activityRouter = require('./routes/activity');
+const teamMembersRouter = require('./routes/teamMembers');
 
 // Initialize express app
 const app = express();
@@ -23,7 +27,13 @@ connectDB();
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'http://localhost:5174',
+    'http://127.0.0.1:5174',
+    process.env.FRONTEND_URL
+  ].filter(Boolean),
   credentials: true,
 }));
 app.use(express.json({ limit: '50mb' }));
@@ -46,6 +56,10 @@ app.use('/api/v1/projects', projectsRouter);
 app.use('/api/v1/clients', clientsRouter);
 app.use('/api/v1/contact', contactRouter);
 app.use('/api/v1/subscribe', subscriptionRouter);
+app.use('/api/v1/client', clientRouter);
+app.use('/api/v1/dashboard', dashboardRouter);
+app.use('/api/v1/activities', activityRouter);
+app.use('/api/v1/team-members', teamMembersRouter);
 
 // 404 Not Found
 app.use('*', (req, res) => {
@@ -59,7 +73,7 @@ app.use('*', (req, res) => {
 app.use(errorHandler);
 
 // Start server
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`
 ╔════════════════════════════════════════════════════════════╗
 ║                                                            ║
@@ -71,8 +85,25 @@ app.listen(PORT, () => {
   `);
 });
 
+// Graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('SIGTERM received. Closing server gracefully...');
+  server.close(() => {
+    console.log('Server closed');
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', () => {
+  console.log('\nSIGINT received. Closing server gracefully...');
+  server.close(() => {
+    console.log('Server closed');
+    process.exit(0);
+  });
+});
+
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err) => {
   console.error('Unhandled Rejection:', err);
-  process.exit(1);
+  server.close(() => process.exit(1));
 });

@@ -26,9 +26,9 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section id="testimonials" className="section bg-white">
+    <section id="testimonials" className="section bg-white dark:bg-gray-800">
       <div className="container">
-        <h2 className="section-title">Happy Clients</h2>
+        <h2 className="section-title dark:text-white">Happy Clients</h2>
 
         {loading ? (
           <div className="flex justify-center py-12">
@@ -36,14 +36,14 @@ const TestimonialsSection = () => {
           </div>
         ) : clients.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-600 text-lg">No testimonials available yet.</p>
+            <p className="text-gray-600 dark:text-gray-300 text-lg">No testimonials available yet.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {clients.map((client) => (
               <div
                 key={client._id}
-                className="bg-gray-50 rounded-lg p-8 shadow-md hover:shadow-lg transition"
+                className="bg-gray-50 dark:bg-gray-700 rounded-lg p-8 shadow-md hover:shadow-lg transition"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <img
@@ -52,8 +52,8 @@ const TestimonialsSection = () => {
                     className="w-16 h-16 rounded-full object-cover"
                   />
                   <div>
-                    <h4 className="font-bold text-gray-900">{client.name}</h4>
-                    <p className="text-sm text-gray-600">{client.designation}</p>
+                    <h4 className="font-bold text-gray-900 dark:text-white">{client.name}</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">{client.designation}</p>
                   </div>
                 </div>
                 <div className="flex gap-1 mb-4">
@@ -65,7 +65,7 @@ const TestimonialsSection = () => {
                     />
                   ))}
                 </div>
-                <p className="text-gray-700 text-sm">
+                <p className="text-gray-700 dark:text-gray-300 text-sm">
                   "{client.description}"
                 </p>
               </div>

@@ -48,15 +48,15 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="section bg-gray-50">
+    <section id="contact" className="section bg-gray-50 dark:bg-gray-900">
       <div className="container">
-        <h2 className="section-title">Get In Touch</h2>
+        <h2 className="section-title dark:text-white">Get In Touch</h2>
 
         <div className="max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
+          <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
                   Full Name *
                 </label>
                 <input
@@ -65,12 +65,12 @@ const ContactForm = () => {
                   value={formData.fullName}
                   onChange={handleChange}
                   placeholder="John Doe"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#1E40AF]"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-[#1E40AF] dark:bg-gray-700 dark:text-white"
                   required
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
                   Email *
                 </label>
                 <input
@@ -79,12 +79,12 @@ const ContactForm = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="john@example.com"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#1E40AF]"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-[#1E40AF] dark:bg-gray-700 dark:text-white"
                   required
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
                   Mobile Number *
                 </label>
                 <input
@@ -93,12 +93,12 @@ const ContactForm = () => {
                   value={formData.mobileNumber}
                   onChange={handleChange}
                   placeholder="(123) 456-7890"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#1E40AF]"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-[#1E40AF] dark:bg-gray-700 dark:text-white"
                   required
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">
                   City *
                 </label>
                 <input
@@ -107,7 +107,7 @@ const ContactForm = () => {
                   value={formData.city}
                   onChange={handleChange}
                   placeholder="New York"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#1E40AF]"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-[#1E40AF] dark:bg-gray-700 dark:text-white"
                   required
                 />
               </div>

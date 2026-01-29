@@ -26,9 +26,9 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="section bg-gray-50">
+    <section id="projects" className="section bg-gray-50 dark:bg-gray-900">
       <div className="container">
-        <h2 className="section-title">Our Projects</h2>
+        <h2 className="section-title dark:text-white">Our Projects</h2>
 
         {loading ? (
           <div className="flex justify-center py-12">
@@ -36,16 +36,16 @@ const ProjectsSection = () => {
           </div>
         ) : projects.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-600 text-lg">No projects available yet.</p>
+            <p className="text-gray-600 dark:text-gray-300 text-lg">No projects available yet.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => (
               <div
                 key={project._id}
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition"
+                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition"
               >
-                <div className="relative h-48 overflow-hidden bg-gray-200">
+                <div className="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-700">
                   <img
                     src={project.imageUrl}
                     alt={project.title}
@@ -53,10 +53,10 @@ const ProjectsSection = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
                     {project.description}
                   </p>
                   <button className="inline-flex items-center gap-2 text-[#1E40AF] hover:text-[#EA580C] transition font-semibold">

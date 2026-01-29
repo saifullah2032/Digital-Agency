@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LogOut, Menu, X } from 'lucide-react';
+import { LogOut, Menu, X, BarChart3, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
@@ -8,10 +8,12 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
   const navigate = useNavigate();
 
   const tabs = [
+    { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
     { id: 'projects', label: 'Projects' },
     { id: 'clients', label: 'Clients' },
     { id: 'inquiries', label: 'Inquiries' },
     { id: 'subscribers', label: 'Subscribers' },
+    { id: 'team-members', label: 'Team Members', icon: Users },
   ];
 
   const handleLogout = () => {
@@ -47,12 +49,13 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
                   setActiveTab(tab.id);
                   setIsOpen(false);
                 }}
-                className={`w-full text-left px-4 py-3 rounded-lg transition ${
+                className={`w-full text-left px-4 py-3 rounded-lg transition flex items-center gap-3 ${
                   activeTab === tab.id
                     ? 'bg-[#EA580C]'
                     : 'hover:bg-blue-700'
                 }`}
               >
+                {tab.icon && <tab.icon size={18} />}
                 {tab.label}
               </button>
             ))}
