@@ -21,6 +21,13 @@ const teamMembersRouter = require('./routes/teamMembers');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Log environment check
+console.log('Environment Check:');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('PORT:', process.env.PORT);
+console.log('MONGODB_URI exists:', !!process.env.MONGODB_URI);
+console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
+
 // Connect to database
 connectDB();
 
